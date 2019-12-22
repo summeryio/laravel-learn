@@ -1,16 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Member; // 这里需要，否则调用报错
 
 class MemberController extends Controller {
     public function info($id) {
 
-        // 按文件夹划分，传递参数
-        return view('member/info', [
-            'name' => 'summery',
-            'age' => 22
-        ]);
+        return Member::getMember();
 
     }
 }
