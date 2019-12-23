@@ -21,4 +21,8 @@ Route::get('/view', function () { // 多个路由调用一个模版
 
 
 
-Route::get('test1', ['uses' => 'StudentController@test1']);
+Route::get('query', ['uses' => 'StudentController@query']);
+Route::get('query2', ['uses' => 'StudentController@query2']);
+Route::get('query3', ['uses' => 'StudentController@query3']);
+Route::get('query4', ['uses' => 'StudentController@query4']);
+Route::get('query5', ['uses' => 'StudentController@query5']);
