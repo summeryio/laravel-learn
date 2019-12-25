@@ -15,7 +15,7 @@
         }
         .main {
             width: 1000px;
-            height: 300px;
+            height: 800px;
             margin:0 auto;
             margin-top: 15px;
             clear: both;

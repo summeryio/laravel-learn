@@ -22,3 +22,4 @@ Route::get('/view', function () { // 多个路由调用一个模版
 
 
 Route::get('section1', ['uses' => 'StudentController@section1']);
+Route::get('url', ['as' => 'url', 'uses' => 'StudentController@urlTest']);
