@@ -21,5 +21,19 @@ Route::get('/view', function () { // 多个路由调用一个模版
 
 
 
-Route::get('section1', ['uses' => 'StudentController@section1']);
-Route::get('url', ['as' => 'url', 'uses' => 'StudentController@urlTest']);
+Route::get('request1', ['uses' => 'StudentController@request1']);
+
+
+Route::group(['middleware' => ['web']], function () {
+    Route::any('session1', ['uses' => 'StudentController@session1']);
+    Route::any('session2', [
+        'as' => 'session2',
+        'uses' => 'StudentController@session2'
+    ]);
+    
+});
+
+Route::get('response', ['uses' => 'StudentController@response']);
+
+
+
