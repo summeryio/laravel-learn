@@ -12,7 +12,7 @@ class StudentController extends Controller {
     // 列表页
     public function index() {
         // $students = Student::get();
-        $students = Student::paginate(2);
+        $students = Student::paginate(10);
         
         return view('student.index', [
             'students' => $students
@@ -27,6 +27,16 @@ class StudentController extends Controller {
     // 保存添加页
     public function save(Request $request) {
         $data = $request -> input('Student');
-        var_dump($data);
+        $student = new Student();
+        $student -> name = $data['name'];
+        $student -> age = $data['age'];
+        $student -> sex = $data['sex'];
+
+        if ($student -> save()) {
+            return redirect('student/index');
+        } else {
+            return redirect() -> back();
+        }
+        
     }
 }

@@ -30,11 +30,11 @@
                     <label for="sex" class="col-sm-2 control-label">性别</label>
                     <div class="col-sm-5">
                         <label class="radio-inline">
-                            <input type="radio"  name="Student[name]" value="10">未知</label>
+                            <input type="radio"  name="Student[sex]" value="10">未知</label>
                         <label class="radio-inline">
-                            <input type="radio"  name="Student[name]" value="20">男</label>
+                            <input type="radio"  name="Student[sex]" value="20">男</label>
                         <label class="radio-inline">
-                            <input type="radio"  name="Student[name]" value="30">女</label></div>
+                            <input type="radio"  name="Student[sex]" value="30">女</label></div>
                     <div class="col-sm-5">
                         <p class="form-control-static text-danger">请选择性别</p></div>
                 </div>
