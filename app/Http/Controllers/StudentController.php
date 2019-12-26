@@ -143,7 +143,19 @@ class StudentController extends Controller {
             -> with('message', '我是来自response页面的快闪数据'); */
 
         // 返回上一个页面
-        return redirect() -> back();
+        // return redirect() -> back();
 
+    }
+
+
+    // ======= Middleware ========
+    public function activity0() {
+        return '活动快要开始啦，敬请期待';
+    }
+    public function activity1() {
+        return '活动进行中1';
+    }
+    public function activity2() {
+        return '活动进行中2';
     }
 }
