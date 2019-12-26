@@ -20,30 +20,6 @@ Route::get('/view', function () { // 多个路由调用一个模版
 
 
 
-// Request
-Route::get('request1', ['uses' => 'StudentController@request1']);
-
-
-// Session
-Route::group(['middleware' => ['web']], function () {
-    Route::any('session1', ['uses' => 'StudentController@session1']);
-    Route::any('session2', [
-        'as' => 'session2',
-        'uses' => 'StudentController@session2'
-    ]);
-});
-
-Route::get('response', ['uses' => 'StudentController@response']);
-
-
-// Middleaware
-
-// 宣传页
-Route::get('activity0', ['uses' => 'StudentController@activity0']);
-
-// 活动页
-Route::group(['middleware' => ['activity']], function () {
-    Route::get('activity1', ['uses' => 'StudentController@activity1']);
-    Route::get('activity2', ['uses' => 'StudentController@activity2']);
-});
-
+Route::get('student/index', ['uses' => 'StudentController@index']);
+Route::get('student/create', ['uses' => 'StudentController@create']);
+Route::post('student/save', ['uses' => 'StudentController@save']);
