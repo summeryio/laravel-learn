@@ -19,7 +19,9 @@ Route::get('/view', function () { // 多个路由调用一个模版
 });
 
 
+Route::group(['middleware' => ['web']], function () {
+    Route::get('student/index', ['uses' => 'StudentController@index']);
+    Route::any('student/create', ['uses' => 'StudentController@create']);
+    Route::post('student/save', ['uses' => 'StudentController@save']);
+});
 
-Route::get('student/index', ['uses' => 'StudentController@index']);
-Route::get('student/create', ['uses' => 'StudentController@create']);
-Route::post('student/save', ['uses' => 'StudentController@save']);

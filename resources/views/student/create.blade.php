@@ -9,7 +9,7 @@
     <div class="panel panel-default">
         <div class="panel-heading">新增学生</div>
         <div class="panel-body">
-            <form class="form-horizontal" method="POST" action="{{ url('student/save') }}">
+            <form class="form-horizontal" method="POST" action="">
                 {{-- @csrf 请求要带令牌 --}}
                 @csrf
                 <div class="form-group">

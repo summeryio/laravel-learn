@@ -10,7 +10,7 @@ class Student extends Model {
     
     public $timestamps = true; // 自动维护时间戳，默认为true
 
-    // protected $fillable = ['name', 'age']; // 指定允许批量赋值的字段，$guarded：指定不允许赋值的字段
+    protected $fillable = ['name', 'age', 'sex']; // 指定允许批量赋值的字段，$guarded：指定不允许赋值的字段
 
     // 添加数据时，设置为unix时间戳
     public function getDateFormat() {

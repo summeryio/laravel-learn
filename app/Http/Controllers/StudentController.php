@@ -20,7 +20,18 @@ class StudentController extends Controller {
     }
     
     // 添加学生页
-    public function create() {
+    public function create(Request $request) {
+        
+        if ($request -> isMethod('POST')) {
+            $data = $request -> input('Student');
+            
+            if (Student::create($data)) {
+                return redirect('student/index') -> with('success', '添加成功');
+            } else {
+                return redirect() -> back() -> with('failed', '添加失败');
+            }
+        }
+        
         return view('student.create');
     }
 
