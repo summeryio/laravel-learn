@@ -5,9 +5,9 @@ namespace App\Model;
 use Illuminate\Database\Eloquent\Model;
 
 class Student extends Model {
-    const SEX_UN = 10;
-    const SEX_MALE = 20;
-    const SEX_FEMALE = 30;
+    const SEX_UN = 2;
+    const SEX_MALE = 0;
+    const SEX_FEMALE = 1;
     
     protected $table = 'students'; // 指定 表名
     // protected $primaryKey = 'id'; // 指定 id

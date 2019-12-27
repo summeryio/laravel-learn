@@ -45,7 +45,7 @@ class StudentController extends Controller {
             $validator = \Validator::make($request -> input(), [
                 'Student.name' => 'required | min:2 | max:20',
                 'Student.age' => 'required | integer',
-                'Student.sex' => 'required | integer'
+                'Student.sex' => 'required'
             ], [
                 'required' => ':attribute 为必填项',
                 'min' => ':attribute 长度不符合要求',
