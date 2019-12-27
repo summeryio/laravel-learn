@@ -48,12 +48,11 @@
                 <div class="form-group">
                     <label for="sex" class="col-sm-2 control-label">性别</label>
                     <div class="col-sm-5">
+                        @foreach ($student -> sex() as $ind => $val)
                         <label class="radio-inline">
-                            <input type="radio"  name="Student[sex]" value="10">未知</label>
-                        <label class="radio-inline">
-                            <input type="radio"  name="Student[sex]" value="20">男</label>
-                        <label class="radio-inline">
-                            <input type="radio"  name="Student[sex]" value="30">女</label>
+                            <input type="radio"  name="Student[sex]" value="{{ $ind }}">{{ $val }}
+                        </label>
+                        @endforeach
                     </div>
                     <div class="col-sm-5">
                         <p class="form-control-static text-danger">{{ $errors -> first('Student.sex') }}</p>

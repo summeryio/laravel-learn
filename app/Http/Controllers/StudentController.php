@@ -12,7 +12,7 @@ class StudentController extends Controller {
     // 列表页
     public function index() {
         // $students = Student::get();
-        $students = Student::paginate(10);
+        $students = Student::paginate(20);
         
         return view('student.index', [
             'students' => $students
@@ -21,6 +21,7 @@ class StudentController extends Controller {
     
     // 添加学生页
     public function create(Request $request) {
+        $student = new Student();
         
         if ($request -> isMethod('POST')) {
 
@@ -63,9 +64,6 @@ class StudentController extends Controller {
                     -> withInput(); // 数据保持
             }
 
-
-
-            
             
             $data = $request -> input('Student');
             
@@ -76,7 +74,7 @@ class StudentController extends Controller {
             }
         }
         
-        return view('student.create');
+        return view('student.create', ['student' => $student]);
     }
 
     // 保存添加页

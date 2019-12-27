@@ -25,12 +25,13 @@
                     <th scope="row">{{ $stu -> id}}</th>
                     <td>{{ $stu -> name }}</td>
                     <td>{{ $stu -> age }}</td>
-                    <td>{{ $stu -> sex }}</td>
+                    <td>{{ $stu -> sex($stu -> sex) }}</td>
                     <td>{{ date('Y-m-d', $stu -> created_at) }}</td>
                     <td>
                         <a href="">详情</a>
                         <a href="">修改</a>
-                        <a href="">删除</a></td>
+                        <a href="">删除</a>
+                    </td>
                 </tr>
                 @endforeach
                 
