@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Contracts\Routing\Response;
 use Illuminate\Http\RedirectResponse;
-
+use Illuminate\Contracts\Validation\Validator;
 
 class StudentController extends Controller {
     // 列表页
@@ -23,12 +23,56 @@ class StudentController extends Controller {
     public function create(Request $request) {
         
         if ($request -> isMethod('POST')) {
+
+            // validate() 控制器验证
+            /* $this -> validate($request, [
+                'Student.name' => 'required | min:2 | max:20',
+                'Student.age' => 'required | integer',
+                'Student.sex' => 'required | integer'
+            ], [
+                'required' => ':attribute 为必填项',
+                'min' => ':attribute 长度不符合要求',
+                'max' => ':attribute 长度不符合要求',
+                'integer' => ':attribute 必须为整数',
+            ], [
+                'Student.name' => '姓名',
+                'Student.age' => '年龄',
+                'Student.sex' => '性别'
+            ]); */
+
+            // Validator 类验证
+            $validator = \Validator::make($request -> input(), [
+                'Student.name' => 'required | min:2 | max:20',
+                'Student.age' => 'required | integer',
+                'Student.sex' => 'required | integer'
+            ], [
+                'required' => ':attribute 为必填项',
+                'min' => ':attribute 长度不符合要求',
+                'max' => ':attribute 长度不符合要求',
+                'integer' => ':attribute 必须为整数',
+            ], [
+                'Student.name' => '姓名',
+                'Student.age' => '年龄',
+                'Student.sex' => '性别'
+            ]);
+
+            if ($validator -> fails()) {
+                return redirect() 
+                    -> back() 
+                    -> withErrors($validator)
+                    -> withInput(); // 数据保持
+            }
+
+
+
+            
+            
             $data = $request -> input('Student');
             
             if (Student::create($data)) {
                 return redirect('student/index') -> with('success', '添加成功');
             } else {
-                return redirect() -> back() -> with('failed', '添加失败');
+                return redirect() -> back();
             }
         }
         
