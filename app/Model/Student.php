@@ -26,7 +26,11 @@ class Student extends Model {
         return $val;
     }
 
-    public function sex($ind = null) {
+    public function fromDateTime($value) {
+        return empty($value) ? $value : $this->getDateFormat();
+    }
+
+    public function getSex($ind = null) {
         $arr = [
             self::SEX_UN => '未知',
             self::SEX_MALE => '男',

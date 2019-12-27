@@ -77,6 +77,48 @@ class StudentController extends Controller {
         return view('student.create', ['student' => $student]);
     }
 
+    public function update(Request $request, $id) {
+        $student = Student::find($id);
+
+        if ($request->isMethod('POST')) {
+            $validator = \Validator::make($request -> input(), [
+                'Student.name' => 'required | min:2 | max:20',
+                'Student.age' => 'required | integer',
+                'Student.sex' => 'required'
+            ], [
+                'required' => ':attribute 为必填项',
+                'min' => ':attribute 长度不符合要求',
+                'max' => ':attribute 长度不符合要求',
+                'integer' => ':attribute 必须为整数',
+            ], [
+                'Student.name' => '姓名',
+                'Student.age' => '年龄',
+                'Student.sex' => '性别'
+            ]);
+
+            if ($validator -> fails()) {
+                return redirect() 
+                    -> back() 
+                    -> withErrors($validator)
+                    -> withInput(); // 数据保持
+            }
+            
+            
+            
+            $data = $request->input('Student');
+
+            $student->name = $data['name'];
+            $student->age = $data['age'];
+            $student->sex = $data['sex'];
+
+            if ($student -> save()) {
+                return redirect('student/index')->with('success', '修改成功 id-' . $id);
+            }
+        }
+        
+        return view('student.update', ['student' => $student]);
+    }
+
     // 保存添加页
     public function save(Request $request) {
         $data = $request -> input('Student');
